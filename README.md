@@ -41,3 +41,10 @@ Using the YOLO package from ultralytics, videos can also be segmented simply be 
    ```sh
    python ./predict_video.py
    ```
+4. To inference on other images or videos, the following Python can be used:
+   ```python
+   from ultralytics import YOLO
+
+   model = YOLO("yolov8_butterfly_custom.pt")
+   model.predict(source="[image_or_video_path_here]", show=True, save=True)
+   ```

@@ -7,6 +7,7 @@ The dataset I chose to use for training and testing this model is a modified ver
 * [ultralytics yolo package (command line and python)](https://github.com/ultralytics/ultralytics) for training a custom model and inferencing on test images/video.
 * [python venv library](https://docs.python.org/3/library/venv.html) for virtual environment setup.
 ## Methods
+### Dataset Modification & Training
 1. The "Nature" dataset was downloaded extraneous instances were removed, as it originally contained images of both squirrels and butterflies, and I wanted to make a somewhat simpler model focused on a single class for both detection and segmentation using YOLO.
 2. Once all images and annotations for squirrels were removed from both the test and training sets, labelme2yolo was used to convert both train and test sets to YOLO format with the `--val_size 0` and `--test_size 0` arguments to avoid the tool furter splitting the data, as the dataset was already split up into train and test sets.
 3. The `dataset.yaml` file created by these commands was then modified to point to the resulting train and test sets and put in the root project directory.
@@ -18,7 +19,8 @@ The model resulting from this training process (saved as [yolov8_butterfly_custo
 ![example1](https://github.com/shepherdm1atwit/butterfly-segmentation/blob/main/runs/segment/predict/butterfly%20(2).png)![example2](https://github.com/shepherdm1atwit/butterfly-segmentation/blob/main/runs/segment/predict/butterfly%20(40).png)![example3](https://github.com/shepherdm1atwit/butterfly-segmentation/blob/main/runs/segment/predict/butterfly%20(102).png)
 
 Using the YOLO package from ultralytics, videos can also be segmented simply be specifying the video instead of an image as the source in `model.predict()`. An example of this can be found [here](https://github.com/shepherdm1atwit/butterfly-segmentation/blob/main/runs/segment/predict2/butterfly.avi).
-## Deployment/Inferencing
+### Deployment/Inferencing
+To use this model locally, follow these steps:
 1. Clone this repository and enter it's directory:
    ```sh
    git clone https://github.com/shepherdm1atwit/butterfly-segmentation
